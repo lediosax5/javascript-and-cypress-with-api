@@ -1,2 +1,4 @@
-it. skip, only,
-cy. log,
+npm run main // usar script guardado en package.json
+it. skip, only, // seleccionar tests
+cy. log, select, check, contain, siblings // comandos cypress
+.clases #ids // mejores selectores // find para achicar el rango de busqueda
