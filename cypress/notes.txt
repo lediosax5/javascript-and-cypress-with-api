@@ -1,4 +1,5 @@
-npm run main // usar script guardado en package.json
-it. skip, only, // seleccionar tests
-cy. log, select, check, contain, siblings // comandos cypress
-.clases #ids // mejores selectores // find para achicar el rango de busqueda
+npm run main //Usar script guardado en package.json
+it. skip, only, //Seleccionar tests
+cy. log, select, check, contain, siblings //Comandos cypress
+.clases #ids //Mejores selectores //Find para achicar el rango de busqueda
+https://www.youtube.com/watch?v=3qyUVr5Q3_A&ab_channel=PushingIT //Si el visit empieza con https se remplaza la url en ese test // estudiantes@pushing-it.com
