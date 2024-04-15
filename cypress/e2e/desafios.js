@@ -22,6 +22,7 @@ describe("Desafios", function(){
         cy.get("#todolistlink").click();
         cy.get(".css-ha1fhc").find('[data-cy="task"]').type("tarea imaginaria");
         cy.get(".css-ha1fhc").find('[data-cy="sendTask"]').click();
-        cy.get(".css-ha1fhc").contains("tarea imaginaria").siblings("button").click();
+        cy.get(".css-ha1fhc").contains("tarea imaginaria").click();
+        //cy.get(".css-ha1fhc").contains("tarea imaginaria").siblings("button").click();
     });
 })
