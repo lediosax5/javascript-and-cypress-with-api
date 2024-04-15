@@ -2,15 +2,16 @@
 []
 
 // -Constants
-//const register = " ";
+const homePage = " ";
 const randomNumber = Math.floor(Math.random() * 10200);
 
 // -Tests
+// With cy selectors and validations
 describe("Positive register", function(){
     it("random user AC", function(){
         cy.visit(" ");
         cy.get('[data-cy="user"]').should('have.attr', 'name', 'user').click();
-        cy.get('[data-cy="user"]').type("name" + randomNumber)
+        cy.get('[data-cy="user"]').type("name1" + randomNumber)
         cy.get('[data-cy="pass"]').should('have.attr', 'name', 'pass').click();
         cy.get('[data-cy="pass"]').type("pass" + randomNumber + "#")
         cy.get("[value='Male']").check({force:true});
@@ -20,14 +21,8 @@ describe("Positive register", function(){
         cy.get('[data-cy="submitForm"]').should('have.attr', 'type', 'submit').click({force:true});
     });
 })
-describe("Negative register", function(){
-    it("empty fields", function(){
-        cy.visit(" ");
-
-    });
-})
-describe("Positive login AC", function(){
-    it("normal login", function(){
+describe("Positive login", function(){
+    it("normal login AC", function(){
         cy.visit(" ");
         cy.get('[data-cy="registertoggle"]').dblclick();
         cy.get('[data-cy="user"]').should('have.attr', 'name', 'user').click();
@@ -37,12 +32,12 @@ describe("Positive login AC", function(){
         cy.get('[data-cy="submitForm"]').should('have.attr', 'type', 'submit').click({force:true});
     });
 })
-//Modifica todos los selectores para obtener los mismos elementos web pero con rutas diferentes
-describe("Actividad complementaria 2", function(){
-    it.only("random user AC con otros selectores", function(){
+// Same web elements with other selectors
+describe("Positive register 02", function(){
+    it.only("random user 02", function(){
         cy.visit(" ");
-        cy.get('input[id="user"]').type("elname" + randomNumber)
-        cy.get('input[id=pass]').type("elpass" + randomNumber + "#")
+        cy.get('input[id="user"]').type("name2" + randomNumber)
+        cy.get('input[id=pass]').type("pass" + randomNumber + "#")
         cy.get("input[value='Male']").check({force:true});
         cy.get('select[id=day]').select(18);
         cy.get("div").children('select[id=month]').select("May");

@@ -2,12 +2,13 @@
 []
 
 // -Constants
-//const register = " ";
+const homePage = " ";
 const randomNumber = Math.floor(Math.random() * 10200);
 
 // -Tests
-describe("Desafios", function(){
-    it.only("desafio 1", function(){
+// Login with validations, creation of a task, marking of a task
+describe("Challenges", function(){
+    it.only("challenge 01", function(){
         cy.visit(" ");
         cy.get('[data-cy="user"]').should('have.attr', 'name', 'user').click();
         cy.get('[data-cy="user"]').type("unname" + randomNumber)
