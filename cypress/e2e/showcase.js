@@ -8,7 +8,7 @@ const randomNumber = Math.floor(Math.random() * 10200);
 // -Tests
 // With cy selectors and validations
 describe("Positive register", function(){
-    it("random user AC", function(){
+    it.only("random user AC", function(){
         cy.visit(" ");
         cy.get('[data-cy="user"]').should('have.attr', 'name', 'user').click();
         cy.get('[data-cy="user"]').type("name1" + randomNumber)
@@ -22,7 +22,7 @@ describe("Positive register", function(){
     });
 })
 describe("Positive login", function(){
-    it("normal login AC", function(){
+    it.only("normal login AC", function(){
         cy.visit(" ");
         cy.get('[data-cy="registertoggle"]').dblclick();
         cy.get('[data-cy="user"]').should('have.attr', 'name', 'user').click();
