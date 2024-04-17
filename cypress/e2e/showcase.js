@@ -3,7 +3,7 @@
 
 // -Constants
 const homePage = " ";
-const randomNumber = Math.floor(Math.random() * 10200);
+const randomNumber = Math.floor(Math.random() * 10200); // variable: Date.now()
 
 // -Tests
 // With cy selectors and validations
@@ -36,12 +36,12 @@ describe("Positive login", function(){
 describe("Positive register 02", function(){
     it.only("random user 02", function(){
         cy.visit(" ");
-        cy.get('input[id="user"]').type("name2" + randomNumber)
+        cy.get('input[id="user"]').type("name2" + Date.now())
         cy.get('input[id=pass]').type("pass" + randomNumber + "#")
         cy.get("input[value='Male']").check({force:true});
         cy.get('select[id=day]').select(18);
         cy.get("div").children('select[id=month]').select("May");
         cy.get("#year").select("1980");
-        cy.get("form").find("button").click({force:true});
+        cy.get("form").find("button").eq(0).click({force:true});
     });
 });
