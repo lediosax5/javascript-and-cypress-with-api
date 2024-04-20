@@ -47,7 +47,7 @@ describe("Positive register 02", function(){
 });
 // Different tests using xpath
 describe("Create task", function(){
-    it.only("create and cross out task AC 03 part 1", function(){
+    it.only("create, cross out and delete task AC 03 part 1", function(){
         cy.visit(" ");
         cy.xpath('//span[@id="registertoggle"]').dblclick();
         cy.xpath("//input[@id='user']").click();
