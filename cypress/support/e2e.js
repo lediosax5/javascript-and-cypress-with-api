@@ -16,6 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
+// Comando para esconder las peticiones
 Cypress.on('uncaught:exception', (err, runnable) => {
     // returning false here prevents Cypress from
     // failing the test
@@ -35,3 +36,4 @@ apps.document.head.appendChild(style);
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+require("cypress-xpath");

@@ -1,0 +1,59 @@
+
+describe('Xpath', () => {
+    it('Encontrar un elemento web utilizando xpath absoluto', () => {
+        cy.visit('');
+        cy.xpath('/html/body/div[1]/div/div/div/form/div[1]/input');
+    });
+
+    it('Encontrar un elemento web utilizando xpath relativo', () => {
+        cy.visit('');
+        cy.xpath("//input[@id='user']");
+    });
+
+    it('Encontrar un elemento web utilizando contains', () => {
+        cy.visit('');
+        cy.xpath("//input[contains(@class,'password')]");
+    });
+
+    it('Encontrar un elemento web utilizando starts-with', () => {
+        cy.visit('');
+        cy.xpath("//input[starts-with(@class,'chakra-input password')]");
+    });
+
+    it('Encontrar un elemento web por su texto', () => {
+        cy.visit('');
+        cy.xpath("//button[text()='Register']");
+        cy.contains('button', 'Register');
+        cy.contains('button', 'register', { matchCase: false });
+    });
+
+    it('Encontrar un elemento web combinando starts-with con el metodo text', () => {
+        cy.visit('');
+        cy.xpath("//p[starts-with(text(),'Si ya estás registrado')]");
+    });
+
+    it('Encontrar un elemento web combinando starts-with con el metodo text', () => {
+        cy.visit('');
+        cy.xpath("//p[contains(text(),'registrado')]");
+    });
+
+    it('Encontrar un elemento web utilizando descendant', () => {
+        cy.visit('');
+        cy.xpath("//fieldset//descendant::input[@value='Male']");
+    });
+
+    it('Encontrar un elemento web utilizando ancestor', () => {
+        cy.visit('');
+        cy.xpath("//input[@value='Male']//ancestor::fieldset");
+    });
+
+    it('Encontrar un elemento web utilizando preceding sibbling', () => {
+        cy.visit('');
+        cy.xpath("//input[@id='user']//preceding-sibling::label");
+    });
+
+    it('Encontrar un elemento web utilizando following sibling', () => {
+        cy.visit('');
+        cy.xpath("//label[@for='user']//following-sibling::input");
+    });
+});

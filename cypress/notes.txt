@@ -2,4 +2,4 @@ npm run main //Usar script guardado en package.json
 it. skip, only, //Seleccionar tests
 cy. log, select, check, contain, siblings //Comandos cypress
 .clases #ids //Mejores selectores //Find para achicar el rango de busqueda
-//Si el visit empieza con https se remplaza la url base en ese test // estudiantes@pushing-it.com
+//Si el visit empieza con https se remplaza la baseurl en ese test // estudiantes@pushing-it.com
