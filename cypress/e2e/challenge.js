@@ -8,7 +8,7 @@ const randomNumber = Math.floor(Math.random() * 10200);
 // -Tests
 // Login with validations, creation of a task, marking of a task
 describe("Challenges", function(){
-    it.only("challenge 01", function(){
+    it("challenge 01", function(){
         cy.visit(" ");
         cy.get('[data-cy="user"]').should('have.attr', 'name', 'user').click();
         cy.get('[data-cy="user"]').type("unname" + randomNumber);
@@ -27,3 +27,67 @@ describe("Challenges", function(){
         //cy.get(".css-ha1fhc").contains("tarea imaginaria").siblings("button").click();
     });
 })
+// Use of before, beforeEach, validations and kinship taking information from a database
+describe('Challenge 02', function(){
+
+    before("credentials", function(){
+        cy.visit("").wait(600);
+    });
+    
+    let data;
+    beforeEach('Login, enter to list, cleanup tasks', function(){
+        cy.fixture('dataFixture').as('data').then(function(data){
+        data.credentials.task1 = "Task 1",
+        data.credentials.task2 = "Task 2",
+        data.credentials.task3 = "Task 3",
+        data.credentials.task4 = "Task 4",
+        data.credentials.task5 = "Task 5"
+        cy.visit(" ").wait(600);
+        cy.get('#registertoggle').dblclick();
+        cy.get('#user').type(this.data.credentials.user);
+        cy.get('#pass').type(this.data.credentials.password);
+        cy.get('#submitForm').click();
+        cy.get('#todolistlink').click();
+        cy.get('#removeAll').click();
+        cy.wait(4000);
+        });
+    });
+
+    it('Insert 5 tasks', function(){
+        cy.xpath('//input[@id="task"]').type(this.data.credentials.task1);
+        cy.xpath('//button[@id="sendTask"]').click().wait(600);
+        cy.xpath('//input[@id="task"]').type(this.data.credentials.task2);
+        cy.xpath('//button[@id="sendTask"]').click().wait(600);
+        cy.xpath('//input[@id="task"]').type(this.data.credentials.task3);
+        cy.xpath('//button[@id="sendTask"]').click().wait(600);
+        cy.xpath('//input[@id="task"]').type(this.data.credentials.task4);
+        cy.xpath('//button[@id="sendTask"]').click().wait(600);
+        cy.xpath('//input[@id="task"]').type(this.data.credentials.task5);
+        cy.xpath('//button[@id="sendTask"]').click().wait(600);
+    });
+    it('Verify “All”, “Completed”, “Active” and “Remove all” buttons', function(){
+        cy.get('[data-cy="all"]').should('be.visible').and('have.text', 'All');
+        cy.get('[data-cy="completed"]').should('be.visible').and('have.text', 'Completed');
+        cy.get('[data-cy="active"]').should('be.visible').and('have.text', 'Active');
+        cy.get('[data-cy="removeAll"]').should('be.visible').and('have.text', 'Remove all');
+        cy.wait(600);
+    });
+    it('Add 2 tasks, complete them and remove the second one', function(){
+        cy.xpath('//input[@id="task"]').type(this.data.credentials.task1);
+        cy.xpath('//button[@id="sendTask"]').click().wait(600);
+        cy.xpath('//input[@id="task"]').type(this.data.credentials.task2);
+        cy.xpath('//button[@id="sendTask"]').click().wait(600);
+        cy.contains("Task 1").click().wait(1000);
+        cy.contains("Task 2").click().wait(1000);
+        cy.get(".css-ha1fhc").contains("Task 2").siblings("button").click().wait(3000);
+    });
+    it('Add 2 tasks, complete them and remove the first one', function(){
+        cy.xpath('//input[@id="task"]').type(this.data.credentials.task1);
+        cy.xpath('//button[@id="sendTask"]').click().wait(600);
+        cy.xpath('//input[@id="task"]').type(this.data.credentials.task2);
+        cy.xpath('//button[@id="sendTask"]').click().wait(600);
+        cy.contains("Task 1").click().wait(1000);
+        cy.contains("Task 2").click().wait(1000);
+        cy.get(".css-ha1fhc").contains("Task 1").siblings("button").click().wait(3000);
+    });
+});

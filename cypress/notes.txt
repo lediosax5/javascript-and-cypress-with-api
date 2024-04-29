@@ -1,3 +1,4 @@
+beforeEach, afterEach //los hooks se ejecutan antes o despues de cada test
 npm run main //Usar script guardado en package.json
 it. skip, only, //Seleccionar tests
 cy. log, select, check, contain, siblings //Comandos cypress
