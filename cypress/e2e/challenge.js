@@ -6,9 +6,9 @@ const homePage = " ";
 const randomNumber = Math.floor(Math.random() * 10200);
 
 // -Tests
-// Login with validations, creation of a task, marking of a task
-describe("Challenges", function(){
-    it("challenge 01", function(){
+// Login with validations BBD, creation of a task, marking of a task
+describe("Challenge 01", function(){
+    it("Create, validate and mark a task", function(){
         cy.visit(" ");
         cy.get('[data-cy="user"]').should('have.attr', 'name', 'user').click();
         cy.get('[data-cy="user"]').type("unname" + randomNumber);
@@ -27,7 +27,7 @@ describe("Challenges", function(){
         //cy.get(".css-ha1fhc").contains("tarea imaginaria").siblings("button").click();
     });
 })
-// Use of before, beforeEach, validations and kinship taking information from a database
+// Use of before, beforeEach, validations BDD and kinship taking information from a database
 describe('Challenge 02', function(){
 
     before("credentials", function(){

@@ -12,4 +12,9 @@ module.exports = defineConfig({
     chromeWebSecurity: false,
     defaultCommandTimeout: 21000,
   },
+  env: { // we can use this or fixture
+        // Cypress.env().usuario
+    usuario: 'pushingit',
+    contraseña: '123456!'
+  }
 });

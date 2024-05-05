@@ -6,7 +6,7 @@ const homePage = " ";
 const randomNumber = Math.floor(Math.random() * 10200); // We can also use the variable: Date.now()
 
 // -Tests
-// Css, cy selectors and validations
+// Css, cy selectors and validations BDD
 describe("Positive register", function(){
     it.only("random user AC", function(){
         cy.visit(" ");
