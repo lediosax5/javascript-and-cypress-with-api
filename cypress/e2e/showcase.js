@@ -34,7 +34,7 @@ describe("Positive login", function(){
 })
 // Same web elements with differents cy selectors
 describe("Positive register 02", function(){
-    it.only("random user 02", function(){
+    it.only("random user AC 02", function(){
         cy.visit(" ");
         cy.get('input[id="user"]').type("name2" + Date.now());
         cy.get('input[id=pass]').type("pass" + randomNumber + "#");
@@ -76,3 +76,21 @@ describe("Create task", function(){
         cy.xpath('//button[@aria-label="Close"]').click();
     });
 })
+// Alert validation with before and beforeEach
+describe('Validate alerts', function(){
+    let data;
+    before("wrong credentials", function(){
+        cy.fixture('dataFixture').as('data');
+   });
+    beforeEach('wrong login', function(){
+        cy.visit("").wait(600);
+        cy.get('#registertoggle').dblclick().wait(600);
+    });
+    it.only('validate error message, non-existent user  AC 04', function(){
+        cy.get('#user').type(this.data.badCredentials.user);
+        cy.get('#pass').type(this.data.badCredentials.password);
+        cy.get('#submitForm').click().wait(2000);
+        cy.get('#messageError').should('have.text', this.data.badCredentials.messageError)
+        cy.wait(4000);
+    });
+});
