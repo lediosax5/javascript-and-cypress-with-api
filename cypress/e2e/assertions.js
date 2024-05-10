@@ -17,7 +17,7 @@ describe('Assertions', () => {
         cy.get('#registertoggle').dblclick();
         cy.get('#user').type(Cypress.env().usuario);
         cy.get('#pass').type(Cypress.env().contraseña);
-        cy.get('#submitForm').click();
+        cy.get('#submitForm').click({force:true});
         cy.get('#waitslink').click();
     });
     it('Assertion using should', () => {

@@ -2,13 +2,13 @@
 []
 
 // -Constants
-const homePage = " ";
-const randomNumber = Math.floor(Math.random() * 10200); // We can also use the variable: Date.now()
+const randomNumber = Math.floor(Math.random() * 10200); // We can also use Date.now()
+const consts = require('../support/consts');
 
 // -Tests
 // Css, cy selectors and validations BDD
 describe("Positive register", function(){
-    it.only("random user AC", function(){
+    it("random user 01", function(){
         cy.visit(" ");
         cy.get('[data-cy="user"]').should('have.attr', 'name', 'user').click();
         cy.get('[data-cy="user"]').type("name1" + randomNumber);
@@ -22,7 +22,7 @@ describe("Positive register", function(){
     });
 })
 describe("Positive login", function(){
-    it.only("normal login AC", function(){
+    it("normal login", function(){
         cy.visit(" ");
         cy.get('[data-cy="registertoggle"]').dblclick();
         cy.get('[data-cy="user"]').should('have.attr', 'name', 'user').click();
@@ -34,7 +34,7 @@ describe("Positive login", function(){
 })
 // Same web elements with differents cy selectors
 describe("Positive register 02", function(){
-    it.only("random user AC 02", function(){
+    it("random user 02", function(){
         cy.visit(" ");
         cy.get('input[id="user"]').type("name2" + Date.now());
         cy.get('input[id=pass]').type("pass" + randomNumber + "#");
@@ -47,7 +47,7 @@ describe("Positive register 02", function(){
 });
 // Different tests using xpath
 describe("Create task", function(){
-    it.only("create, cross out and delete task AC 03 part 1", function(){
+    it("create, cross out and delete task", function(){
         cy.visit(" ");
         cy.xpath('//span[@id="registertoggle"]').dblclick();
         cy.xpath("//input[@id='user']").click();
@@ -64,7 +64,7 @@ describe("Create task", function(){
         cy.xpath("//p[text()='are you talking to me']//following-sibling::button").click({force:true});
         cy.wait(6000);
     });
-    it.only('open and close modal AC 03 part 2', () => {
+    it('open and close modal', () => {
         cy.visit('');
         cy.xpath("//span[text()='Iniciá sesión']").dblclick();
         cy.xpath('//input[@id="user"]').type("pushingit");
@@ -86,11 +86,35 @@ describe('Validate alerts', function(){
         cy.visit("").wait(600);
         cy.get('#registertoggle').dblclick().wait(600);
     });
-    it.only('validate error message, non-existent user  AC 04', function(){
+    it('validate error message, non-existent user  AC 04', function(){
         cy.get('#user').type(this.data.badCredentials.user);
         cy.get('#pass').type(this.data.badCredentials.password);
         cy.get('#submitForm').click().wait(2000);
         cy.get('#messageError').should('have.text', this.data.badCredentials.messageError)
         cy.wait(4000);
+    });
+});
+// BDD, TDD and timers
+describe('BDD, TDD and timers', ()=>{
+    beforeEach('ff', ()=>{
+        cy.visit('');
+        cy.get("#registertoggle").dblclick()
+        cy.get('#user').type(Cypress.env().usuario)
+        cy.get('#pass').type(Cypress.env().contraseña)
+        cy.get('#submitForm').click()
+        cy.get(`[id*='user_pushingit']`).should('exist')
+        cy.get('#waitslink').click()
+        cy.get('button#wait').dblclick()
+    });
+    it.only('validate transitions', function(){
+        cy.get('[data-cy="wait"]').should('have.text', 'Cargando'),{timeout: consts.TIMEOUT};
+        cy.get('[data-cy="wait"]').should('have.text', 'Button'),{timeout: consts.TIMEOUT};
+    });
+    it.only('validate messages in real time', function(){
+        cy.get('[data-cy="colorChangeMessage"]').should('have.text', consts.WAITS.alert5se),{timeout: consts.TIMEOUT};
+    });
+    it.only('validate transitions and messages', function(){
+       cy.get('[data-cy="message"]').should('have.text', consts.WAITS.alert10se),{timeout: consts.TIMEOUT};
+       cy.get('[data-cy="message"]').should('have.text', consts.WAITS.alert50se),{timeout: consts.TIMEOUT};
     });
 });

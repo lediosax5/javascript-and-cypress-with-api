@@ -2,8 +2,7 @@
 []
 
 // -Constants
-const homePage = " ";
-const randomNumber = Math.floor(Math.random() * 10200);
+const randomNumber = Math.floor(Math.random() * 10200); // We can also use Date.now()
 
 // -Tests
 // Login with validations BBD, creation of a task, marking of a task
@@ -21,19 +20,14 @@ describe("Challenge 01", function(){
         cy.get('button[data-cy="submitForm"]').should('have.attr', 'type', 'submit').click({force:true});
         // to do list page
         cy.get("#todolistlink").click();
-        cy.get(".css-ha1fhc").find('[data-cy="task"]').type("tarea imaginaria");
+        cy.get(".css-ha1fhc").find('[data-cy="task"]').type("give it to me");
         cy.get(".css-ha1fhc").find('[data-cy="sendTask"]').click();
-        cy.get(".css-ha1fhc").contains("tarea imaginaria").click();
-        //cy.get(".css-ha1fhc").contains("tarea imaginaria").siblings("button").click();
+        cy.get(".css-ha1fhc").contains("give it to me").click();
+        //cy.get(".css-ha1fhc").contains("give it to me").siblings("button").click();
     });
 })
 // Use of before, beforeEach, validations BDD and kinship taking information from a database
 describe('Challenge 02', function(){
-
-    before("credentials", function(){
-        cy.visit("").wait(600);
-    });
-    
     let data;
     beforeEach('Login, enter to list, cleanup tasks', function(){
         cy.fixture('dataFixture').as('data').then(function(data){
@@ -49,7 +43,7 @@ describe('Challenge 02', function(){
         cy.get('#submitForm').click();
         cy.get('#todolistlink').click();
         cy.get('#removeAll').click();
-        cy.wait(4000);
+        cy.get("li").should("not.exist");
         });
     });
 
@@ -63,7 +57,7 @@ describe('Challenge 02', function(){
         cy.xpath('//input[@id="task"]').type(this.data.credentials.task4);
         cy.xpath('//button[@id="sendTask"]').click().wait(600);
         cy.xpath('//input[@id="task"]').type(this.data.credentials.task5);
-        cy.xpath('//button[@id="sendTask"]').click().wait(600);
+        cy.xpath('//button[@id="sendTask"]').click();
     });
     it('Verify “All”, “Completed”, “Active” and “Remove all” buttons', function(){
         cy.get('[data-cy="all"]').should('be.visible').and('have.text', 'All');
