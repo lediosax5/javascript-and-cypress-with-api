@@ -86,7 +86,7 @@ describe('Validate alerts', function(){
         cy.visit("").wait(600);
         cy.get('#registertoggle').dblclick().wait(600);
     });
-    it('validate error message, non-existent user  AC 04', function(){
+    it('validate error message, non-existent user', function(){
         cy.get('#user').type(this.data.badCredentials.user);
         cy.get('#pass').type(this.data.badCredentials.password);
         cy.get('#submitForm').click().wait(2000);
@@ -106,14 +106,14 @@ describe('BDD, TDD and timers', ()=>{
         cy.get('#waitslink').click()
         cy.get('button#wait').dblclick()
     });
-    it.only('validate transitions', function(){
+    it('validate transitions', function(){
         cy.get('[data-cy="wait"]').should('have.text', 'Cargando'),{timeout: consts.TIMEOUT};
         cy.get('[data-cy="wait"]').should('have.text', 'Button'),{timeout: consts.TIMEOUT};
     });
-    it.only('validate messages in real time', function(){
+    it('validate messages in real time', function(){
         cy.get('[data-cy="colorChangeMessage"]').should('have.text', consts.WAITS.alert5se),{timeout: consts.TIMEOUT};
     });
-    it.only('validate transitions and messages', function(){
+    it('validate transitions and messages', function(){
        cy.get('[data-cy="message"]').should('have.text', consts.WAITS.alert10se),{timeout: consts.TIMEOUT};
        cy.get('[data-cy="message"]').should('have.text', consts.WAITS.alert50se),{timeout: consts.TIMEOUT};
     });
