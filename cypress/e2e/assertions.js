@@ -15,8 +15,8 @@ describe('Assertions', () => {
     beforeEach('BeforeEach', () => {
         cy.visit('');
         cy.get('#registertoggle').dblclick();
-        cy.get('#user').type(Cypress.env().usuario);
-        cy.get('#pass').type(Cypress.env().contraseña);
+        cy.get('#user').type(Cypress.env().user);
+        cy.get('#pass').type(Cypress.env().pass);
         cy.get('#submitForm').click({force:true});
         cy.get('#waitslink').click();
     });

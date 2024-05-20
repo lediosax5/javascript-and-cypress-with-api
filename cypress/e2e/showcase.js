@@ -99,8 +99,8 @@ describe('BDD, TDD and timers', ()=>{
     beforeEach('ff', ()=>{
         cy.visit('');
         cy.get("#registertoggle").dblclick()
-        cy.get('#user').type(Cypress.env().usuario)
-        cy.get('#pass').type(Cypress.env().contraseña)
+        cy.get('#user').type(Cypress.env().user)
+        cy.get('#pass').type(Cypress.env().pass)
         cy.get('#submitForm').click()
         cy.get(`[id*='user_pushingit']`).should('exist')
         cy.get('#waitslink').click()
