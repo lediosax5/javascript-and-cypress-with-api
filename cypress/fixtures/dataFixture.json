@@ -1,7 +1,7 @@
 {
     "credentials": {
         "user": "pushingit",
-        "password": "123456!"
+        "pass": "123456!"
     },
     "tasks": {
         "task1": "Task 1",
@@ -12,7 +12,7 @@
     },
     "badCredentials": {
         "user": "inexistente",
-        "password": "123456!",
+        "pass": "123456!",
         "messageError": "Credentials were not found"
     }
 }

@@ -39,7 +39,7 @@ describe('Challenge 02', function(){
         cy.visit(" ").wait(600);
         cy.get('#registertoggle').dblclick();
         cy.get('#user').type(this.data.credentials.user);
-        cy.get('#pass').type(this.data.credentials.password);
+        cy.get('#pass').type(this.data.credentials.pass);
         cy.get('#submitForm').click();
         cy.get('#todolistlink').click();
         cy.get('#removeAll').click();

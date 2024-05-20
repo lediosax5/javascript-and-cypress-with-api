@@ -88,7 +88,7 @@ describe('Validate alerts', function(){
     });
     it('validate error message, non-existent user', function(){
         cy.get('#user').type(this.data.badCredentials.user);
-        cy.get('#pass').type(this.data.badCredentials.password);
+        cy.get('#pass').type(this.data.badCredentials.pass);
         cy.get('#submitForm').click().wait(2000);
         cy.get('#messageError').should('have.text', this.data.badCredentials.messageError)
         cy.wait(4000);
