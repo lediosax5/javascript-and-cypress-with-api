@@ -14,5 +14,19 @@
         "user": "inexistente",
         "pass": "123456!",
         "messageError": "Credentials were not found"
+    },
+    "products": {
+        "firstProduct": {
+            "name": "Remera Negra",
+            "unitPrice": 7.12,
+            "quantity": 2,
+            "totalPrice": 14.24
+        },
+        "secondProduct": {
+            "name": "Jean Azul",
+            "unitPrice": 11.98,
+            "quantity": 1,
+            "totalPrice": 11.98
+        }
     }
 }

@@ -34,8 +34,8 @@ describe('Assertions', () => {
         });
     });
     it('Validate the use of length using the should method', () => {
-        cy.get('#title').should('have.length', 1); // number of web parts whose ID is waits
-        cy.get('#title').invoke('text').should('have.length', 5); // number of characters in the text of the text web element
+        cy.get('#title').should('have.length', 1); // number of web parts
+        cy.get('#title').invoke('text').should('have.length', 5); // number of characters
     });
     it('Validate css color using should', () => {
         cy.get('#title').should('have.css', 'color', consts.WAITS.COLOR);
