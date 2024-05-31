@@ -25,11 +25,11 @@ describe('Add, check and calculate products in the cart', () => {
     // Validations according to the name of the product
     it('Adding products, validate all their values and the sum of them', () => {
         cy.xpath("//a[@id='onlineshoplink']").click();
-        productsPage.addProduct('#add-to-cart-1002');
+        productsPage.addProduct(data.products.firstProduct.name);
         productsPage.closeModal();
-        productsPage.addProduct('#add-to-cart-1002');
+        productsPage.addProduct(data.products.firstProduct.name);
         productsPage.closeModal();
-        productsPage.addProduct('#add-to-cart-1003');
+        productsPage.addProduct(data.products.secondProduct.name);
         productsPage.closeModal();
         onlineShopPage.shoppingCardBtn();
         shoppingCardPage.productName(data.products.firstProduct.name);

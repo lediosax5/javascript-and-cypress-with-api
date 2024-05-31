@@ -7,7 +7,7 @@ class productsPage{
     }
 
     addProduct (product){
-        cy.get(product).click({force:true});
+        cy.get(`[name="${product}"]`).click({force:true});
     }
 }
 

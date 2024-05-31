@@ -1,6 +1,4 @@
-beforeEach, afterEach //los hooks se ejecutan antes o despues de cada test
-npm run main //Usar script guardado en package.json
-it. skip, only, //Seleccionar tests
-cy. log, select, check, contain, siblings //Comandos cypress
-.clases #ids //Mejores selectores //Find para achicar el rango de busqueda
-//Si el visit empieza con https se remplaza la baseurl en ese test // estudiantes@pushing-it.com
+Si el visit empieza con https se remplaza la baseurl en ese test
+npx cypress run --record --key bb0186ea-7c87-4551-b91b-c2a4d5cfedd0
+estudiantes@pushing-it.com
+npm run main

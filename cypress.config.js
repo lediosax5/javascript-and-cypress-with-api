@@ -16,5 +16,8 @@ module.exports = defineConfig({
   env: { // we can use this or fixture // Cypress.env().user
     user: 'pushingit',
     pass: '123456!'
-  }
+  },
+  retries: 1,
+  //video: true,
+  projectId: "anyf6i"
 });
