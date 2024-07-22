@@ -31,19 +31,19 @@ describe('Challenge 02', function(){
     let data;
     beforeEach('Login, enter to list, cleanup tasks', function(){
         cy.fixture('dataFixture').as('data').then(function(data){
-        data.credentials.task1 = "Task 1",
-        data.credentials.task2 = "Task 2",
-        data.credentials.task3 = "Task 3",
-        data.credentials.task4 = "Task 4",
-        data.credentials.task5 = "Task 5"
-        cy.visit(" ").wait(600);
-        cy.get('#registertoggle').dblclick();
-        cy.get('#user').type(this.data.credentials.user);
-        cy.get('#pass').type(this.data.credentials.pass);
-        cy.get('#submitForm').click();
-        cy.get('#todolistlink').click();
-        cy.get('#removeAll').click();
-        cy.get("li").should("not.exist");
+            data.credentials.task1 = "Task 1",
+            data.credentials.task2 = "Task 2",
+            data.credentials.task3 = "Task 3",
+            data.credentials.task4 = "Task 4",
+            data.credentials.task5 = "Task 5"
+            cy.visit(" ").wait(600);
+            cy.get('#registertoggle').dblclick();
+            cy.get('#user').type(this.data.credentials.user);
+            cy.get('#pass').type(this.data.credentials.pass);
+            cy.get('#submitForm').click();
+            cy.get('#todolistlink').click();
+            cy.get('#removeAll').click();
+            cy.get("li").should("not.exist");
         });
     });
 
