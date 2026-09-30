@@ -1,4 +1,0 @@
-Si el visit empieza con https se remplaza la baseurl en ese test
-npx cypress run --record --key bb0186ea-7c87-4551-b91b-c2a4d5cfedd0
-estudiantes@pushing-it.com
-npm run main

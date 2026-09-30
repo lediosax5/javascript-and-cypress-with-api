@@ -1,12 +1,11 @@
 {
   "name": "javascript-and-cypress-with-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Cypress E2E and API testing practice suite",
   "scripts": {
-    "sample": "echo \"Error: no test specified\" && exit 1",
-    "main": "npx cypress open --e2e -b chrome",
-    "test": "npx cypress open --e2e -b chrome"
+    "open": "cypress open --e2e -b chrome",
+    "test": "cypress open --e2e -b chrome",
+    "test:run": "cypress run --e2e"
   },
   "keywords": [],
   "author": "",

@@ -31,15 +31,15 @@ describe('Challenge 02', function(){
     let data;
     beforeEach('Login, enter to list, cleanup tasks', function(){
         cy.fixture('dataFixture').as('data').then(function(data){
-            data.credentials.task1 = "Task 1",
-            data.credentials.task2 = "Task 2",
-            data.credentials.task3 = "Task 3",
-            data.credentials.task4 = "Task 4",
-            data.credentials.task5 = "Task 5"
+            data.tasks.task1 = "Task 1";
+            data.tasks.task2 = "Task 2";
+            data.tasks.task3 = "Task 3";
+            data.tasks.task4 = "Task 4";
+            data.tasks.task5 = "Task 5";
             cy.visit(" ").wait(600);
             cy.get('#registertoggle').dblclick();
-            cy.get('#user').type(this.data.credentials.user);
-            cy.get('#pass').type(this.data.credentials.pass);
+            cy.get('#user').type(Cypress.env('user'));
+            cy.get('#pass').type(Cypress.env('pass'));
             cy.get('#submitForm').click();
             cy.get('#todolistlink').click();
             cy.get('#removeAll').click();
@@ -48,15 +48,15 @@ describe('Challenge 02', function(){
     });
 
     it('Insert 5 tasks', function(){
-        cy.xpath('//input[@id="task"]').type(this.data.credentials.task1);
+        cy.xpath('//input[@id="task"]').type(this.data.tasks.task1);
         cy.xpath('//button[@id="sendTask"]').click().wait(600);
-        cy.xpath('//input[@id="task"]').type(this.data.credentials.task2);
+        cy.xpath('//input[@id="task"]').type(this.data.tasks.task2);
         cy.xpath('//button[@id="sendTask"]').click().wait(600);
-        cy.xpath('//input[@id="task"]').type(this.data.credentials.task3);
+        cy.xpath('//input[@id="task"]').type(this.data.tasks.task3);
         cy.xpath('//button[@id="sendTask"]').click().wait(600);
-        cy.xpath('//input[@id="task"]').type(this.data.credentials.task4);
+        cy.xpath('//input[@id="task"]').type(this.data.tasks.task4);
         cy.xpath('//button[@id="sendTask"]').click().wait(600);
-        cy.xpath('//input[@id="task"]').type(this.data.credentials.task5);
+        cy.xpath('//input[@id="task"]').type(this.data.tasks.task5);
         cy.xpath('//button[@id="sendTask"]').click();
     });
     it('Verify “All”, “Completed”, “Active” and “Remove all” buttons', function(){
@@ -67,18 +67,18 @@ describe('Challenge 02', function(){
         cy.wait(600);
     });
     it('Add 2 tasks, complete them and remove the second one', function(){
-        cy.xpath('//input[@id="task"]').type(this.data.credentials.task1);
+        cy.xpath('//input[@id="task"]').type(this.data.tasks.task1);
         cy.xpath('//button[@id="sendTask"]').click().wait(600);
-        cy.xpath('//input[@id="task"]').type(this.data.credentials.task2);
+        cy.xpath('//input[@id="task"]').type(this.data.tasks.task2);
         cy.xpath('//button[@id="sendTask"]').click().wait(600);
         cy.contains("Task 1").click().wait(1000);
         cy.contains("Task 2").click().wait(1000);
         cy.get(".css-ha1fhc").contains("Task 2").siblings("button").click().wait(3000);
     });
     it('Add 2 tasks, complete them and remove the first one', function(){
-        cy.xpath('//input[@id="task"]').type(this.data.credentials.task1);
+        cy.xpath('//input[@id="task"]').type(this.data.tasks.task1);
         cy.xpath('//button[@id="sendTask"]').click().wait(600);
-        cy.xpath('//input[@id="task"]').type(this.data.credentials.task2);
+        cy.xpath('//input[@id="task"]').type(this.data.tasks.task2);
         cy.xpath('//button[@id="sendTask"]').click().wait(600);
         cy.contains("Task 1").click().wait(1000);
         cy.contains("Task 2").click().wait(1000);

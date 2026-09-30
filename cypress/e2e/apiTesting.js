@@ -8,7 +8,8 @@ import reciptPage from "../support/pages/reciptPage";
 // -Tests
 describe('Register, login and delete user', () => {
     const url = 'https://pushing-it.onrender.com';
-    //let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTcyMzI4MDd9.xZrphbVVqaUuca8Hh24J_KZU4tmJfA2Y_gEVVn9A0MY"
+    const username = Cypress.env('apiUser');
+    const password = Cypress.env('apiPassword');
 
     it('test', () => {
         cy.request({
@@ -16,8 +17,8 @@ describe('Register, login and delete user', () => {
             url: `${url}/api/register`,
             //headers: { 'autorization': `Bearer ${token}`, },
             body: {
-                username : "guido01",
-                password: "pass123!",
+                username,
+                password,
                 gender: "male",
                 day: "5",
                 month: "May",
@@ -26,35 +27,37 @@ describe('Register, login and delete user', () => {
         }).then(response => {
             cy.log(response)
             expect(response.status).to.be.equal(201);
-            expect(response.body.newUser.username).to.be.equal("guido01");
+            expect(response.body.newUser.username).to.be.equal(username);
         });
         cy.request({
             method: 'POST',
             url: `${url}/api/login`,
             //headers: { 'autorization': `Bearer ${token}`, },
             body: {
-                username : "guido01",
-                password: "pass123!",
+                username,
+                password,
             }
         }).then(response => {
             cy.log(response)
             expect(response.status).to.be.equal(201);
-            expect(response.body.user.username).to.be.equal("guido01");
+            expect(response.body.user.username).to.be.equal(username);
         });
         cy.request({
             method: 'DELETE',
-            url: `${url}/api/deleteuser/guido01/`,
+            url: `${url}/api/deleteuser/${username}/`,
             //headers: { 'autorization': `Bearer ${token}`, },
         }).then(response => {
             cy.log(response)
             expect(response.status).to.be.equal(202);
-            expect(response.body.user.username).to.be.equal("guido01");
+            expect(response.body.user.username).to.be.equal(username);
         });
     });
 });
 
 describe('Register, login, purchases and validations', () => {
     const url = 'https://pushing-it.onrender.com';
+    const username = Cypress.env('apiUser');
+    const password = Cypress.env('apiPassword');
     let token;
     let stock;
     let card;
@@ -73,8 +76,8 @@ describe('Register, login, purchases and validations', () => {
             method: 'POST',
             url: `${url}/api/register`,
             body: {
-                username : "guido01",
-                password: "pass123!",
+                username,
+                password,
                 gender: "male",
                 day: "5",
                 month: "May",
@@ -85,8 +88,8 @@ describe('Register, login, purchases and validations', () => {
             method: 'POST',
             url: `${url}/api/login`,
             body: {
-                username : "guido01",
-                password: "pass123!",
+                username,
+                password,
             }
         }).then(response => {
             cy.log(response);
@@ -130,12 +133,12 @@ describe('Register, login, purchases and validations', () => {
     after("delete user", () => {
         cy.request({
             method: 'DELETE',
-            url: `${url}/api/deleteuser/guido01/`,
+            url: `${url}/api/deleteuser/${username}/`,
             headers: { 'autorization': `Bearer ${token}`, },
         }).then(response => {
             cy.log(response)
             expect(response.status).to.be.equal(202);
-            expect(response.body.user.username).to.be.equal("guido01");
+            expect(response.body.user.username).to.be.equal(username);
         });
     });
 });

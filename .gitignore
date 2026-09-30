@@ -1,0 +1,12 @@
+node_modules/
+
+# Cypress artifacts
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+
+# Local configuration and logs
+.env
+.env.*
+!.env.example
+npm-debug.log*
